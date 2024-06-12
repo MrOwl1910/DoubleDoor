@@ -27,11 +27,15 @@ public class player_control : MonoBehaviour
     {
         if (_IsAlive) // to run movement smooth 
         {
-            _rb.velocity = _MovementValue * _PlayerSpeed;
+            _rb.velocity = _MovementValue * _PlayerSpeed; 
         }
     }
     void intraction()
     {
+        if (Input.GetKeyDown(KeyCode.R)) 
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }
         if (Input.GetKeyUp(KeyCode.E))
         {
             if (P1isongate && hadkey && P2Movement.hedkey && P2Movement.P2isongate) // check if both players has key or not
