@@ -37,6 +37,7 @@ public class P2Movement : MonoBehaviour
             else
             {
                 player_control._IsAlive = false;
+                FindObjectOfType<AudioManeger>().Play("PlayerDeath");
             }
         }
     }
@@ -45,6 +46,7 @@ public class P2Movement : MonoBehaviour
         if ( collision.gameObject.tag == "Death") //player 1 daeth check
         {
             player_control._IsAlive = false;
+            FindObjectOfType<AudioManeger>().Play("PlayerDeath");
             Debug.Log("Player is dead");
         }
         if (collision.gameObject.tag == "P2_Gate") //player on gate check 
@@ -54,6 +56,7 @@ public class P2Movement : MonoBehaviour
         }
         if (collision.gameObject.tag == "P2GateKey") //key check 
         {
+            FindObjectOfType<AudioManeger>().Play("PickUp");
             hedkey = true;
             Debug.Log(" player has key" + gameObject.name);
         }

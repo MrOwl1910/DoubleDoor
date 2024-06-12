@@ -18,7 +18,6 @@ public class player_control : MonoBehaviour
         P1isongate = false;
         P1passGate = false;
     }
-
     private void Update()
     {
         intraction(); //to use key in every frame without frames restricson
@@ -42,11 +41,13 @@ public class player_control : MonoBehaviour
             {
                 P1passGate = true;
                 Debug.Log("Pass the Gate " + gameObject.name);
+                FindObjectOfType<AudioManeger>().Play("Next");
                 SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
             }
             else
             {
-                _IsAlive = false; 
+                _IsAlive = false;
+                FindObjectOfType<AudioManeger>().Play("PlayerDeath");
             }
         }
     }
@@ -59,6 +60,8 @@ public class player_control : MonoBehaviour
         if (collision.gameObject.tag == "Death")//player 1 daeth check
         {
             _IsAlive = false;
+
+            FindObjectOfType<AudioManeger>().Play("PlayerDeath");
             Debug.Log("Player is dead");
         }
         if (collision.gameObject.tag == "P1_Gate" )//player on gate check
@@ -67,7 +70,8 @@ public class player_control : MonoBehaviour
             Debug.Log("player is on gate" + gameObject.name);
         }
         if (collision.gameObject.tag == "P1GateKey") //key check
-        { 
+        {
+            FindObjectOfType<AudioManeger>().Play("PickUp");
             hadkey = true;
             Debug.Log(" player has key" + gameObject.name);
         }
