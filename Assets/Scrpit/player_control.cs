@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 public class player_control : MonoBehaviour
 {    
     public static float _PlayerSpeed = 3f;
@@ -37,6 +38,7 @@ public class player_control : MonoBehaviour
             {
                 P1passGate = true;
                 Debug.Log("Pass the Gate " + gameObject.name);
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
             }
             else
             {
