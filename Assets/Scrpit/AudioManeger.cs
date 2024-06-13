@@ -4,12 +4,9 @@ using System;
 public class AudioManeger : MonoBehaviour
 {
     public Sound[] sounds;
-
     public static AudioManeger instance; 
-
     private void Awake()
     {
-
         if (instance == null)
         {
             instance = this;
@@ -20,10 +17,9 @@ public class AudioManeger : MonoBehaviour
             return;
         }
         DontDestroyOnLoad(gameObject);
-
         foreach(Sound s in sounds)
         {
-           s.source = gameObject.AddComponent<AudioSource>();
+            s.source = gameObject.AddComponent<AudioSource>();
             s.source.clip = s.clip;
             s.source.volume = s.volume;
             s.source.pitch = s.pitch;
@@ -34,7 +30,6 @@ public class AudioManeger : MonoBehaviour
     {
         Play("Main");
     }
-
     public void Play(string name)
     {
         Sound s =Array.Find(sounds, sound  => sound.name == name);
@@ -43,8 +38,6 @@ public class AudioManeger : MonoBehaviour
         {
             Debug.LogWarning("sound: "+ name + " Not Found");
             return;
-        }
-       
+        }  
     }
-
 }//class

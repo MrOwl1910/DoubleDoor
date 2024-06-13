@@ -1,5 +1,4 @@
 using UnityEngine;
-
 public class P2Movement : MonoBehaviour
 {
     public Rigidbody2D _rb;
@@ -56,8 +55,8 @@ public class P2Movement : MonoBehaviour
         }
         if (collision.gameObject.tag == "P2GateKey") //key check 
         {
-            FindObjectOfType<AudioManeger>().Play("PickUp");
             hedkey = true;
+            FindObjectOfType<AudioManeger>().Play("PickUp");
             Debug.Log(" player has key" + gameObject.name);
         }
     }

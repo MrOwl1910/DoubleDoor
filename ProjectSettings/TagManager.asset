@@ -56,11 +56,11 @@ TagManager:
   - name: Gate
     uniqueID: 3185156165
     locked: 0
-  - name: Player
-    uniqueID: 308117023
-    locked: 0
   - name: Trap
     uniqueID: 458521495
+    locked: 0
+  - name: Player
+    uniqueID: 308117023
     locked: 0
   - name: Keys
     uniqueID: 3043691301

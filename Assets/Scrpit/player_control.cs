@@ -5,6 +5,8 @@ public class player_control : MonoBehaviour
 {    
     public static float _PlayerSpeed = 3f;
     public Rigidbody2D _rb;
+    [SerializeField]
+    public static Animation Animation;
     public static Vector2 _MovementValue;
     public static bool _IsAlive;
     public static bool P1isongate;
@@ -31,6 +33,12 @@ public class player_control : MonoBehaviour
     }
     void intraction()
     {
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            SceneManager.LoadScene(0);
+        
+        }
         if (Input.GetKeyDown(KeyCode.R)) 
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
@@ -41,8 +49,8 @@ public class player_control : MonoBehaviour
             {
                 P1passGate = true;
                 Debug.Log("Pass the Gate " + gameObject.name);
-                FindObjectOfType<AudioManeger>().Play("Next");
                 SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+                FindObjectOfType<AudioManeger>().Play("Next");
             }
             else
             {
@@ -60,7 +68,6 @@ public class player_control : MonoBehaviour
         if (collision.gameObject.tag == "Death")//player 1 daeth check
         {
             _IsAlive = false;
-
             FindObjectOfType<AudioManeger>().Play("PlayerDeath");
             Debug.Log("Player is dead");
         }
@@ -71,8 +78,9 @@ public class player_control : MonoBehaviour
         }
         if (collision.gameObject.tag == "P1GateKey") //key check
         {
-            FindObjectOfType<AudioManeger>().Play("PickUp");
+           
             hadkey = true;
+            FindObjectOfType<AudioManeger>().Play("PickUp");
             Debug.Log(" player has key" + gameObject.name);
         }
     }
